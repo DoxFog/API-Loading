@@ -44,6 +44,7 @@ let bgbot;
 let bocs;
 let border;
 let bord;
+let topbord;
 
 
 let screenx = 50;
@@ -66,6 +67,7 @@ function preload()
     border = loadImage("../frame-sprite-bot.png");
     bord = loadImage("../frame-sprite-cut.png");
     indicator = loadImage("https://vignette.wikia.nocookie.net/leagueoflegends/images/0/02/Howling_Abyss_icon.png/revision/latest?cb=20171101151627")
+    //topbord = loadImage("../frame-sprite-top.png");
     
 }
 
@@ -104,7 +106,7 @@ function setup()
 //    build = random(itemid.ItemID.items);//end game build
 //    late = IT.data[build].name;
     
-    icon = loadImage("https://ddragon.leagueoflegends.com/cdn/7.10.1/img/champion/"+ ion + ".png") 
+    icon = loadImage("http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/"+ ion+".png") 
     icon2 = loadImage("http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/"+ start1 +".png")
     icon3 = loadImage("http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/"+ start2 +".png")
     icon4 = loadImage("http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/"+ shoe +".png")
@@ -131,6 +133,9 @@ function draw()
     imageMode(CENTER);
     image(bg, (1/2*(windowWidth)), 0, 1920, 1080);
     image(bgbot, (1/2*(windowWidth)), 1000);
+    //ICON FOR CHAMPION HAS BEEN MOVED HERE
+    image(icon, (1/2*(windowWidth)), 1/2*windowHeight-230, 160, 160 /*480, 283.26*/);
+    //image(topbord, (1/2*(windowWidth)), (1/2*(windowHeight))-325, 500, 300);
     reroll.position((1/2*(windowWidth-225)),(1/2*windowHeight)+300);
     image(indicator,(1/2*(windowWidth)),(1/2*windowHeight)+300, 150, 150)
     image(border, (1/2*(windowWidth)),  1/2*windowHeight+140, 1200, 148);
@@ -142,7 +147,7 @@ function draw()
     textSize(70);
     textStyle(BOLD);
     fill('gold');
-    text(ion + " " + est ,(1/2*(windowWidth)), (1/2*windowHeight)+150);
+    text(Champ.data[ion].name + " " + est ,(1/2*(windowWidth)), (1/2*windowHeight)+150);
     textAlign(CORNER);
     textSize(30);
     fill(0);
@@ -152,7 +157,8 @@ function draw()
     text("Trinket: ", (1/2*(windowWidth))+400, (1/2*(windowHeight))-40);
     
     imageMode(CENTER);
-    image(icon, (1/2*(windowWidth)), 1/2*windowHeight-170);
+    
+    
     image(logo, (1/2*(windowWidth)), 80, 500, 198);
     image(icon2, (1/2*(windowWidth))-480, (1/2*(windowHeight)+10));
     image(icon3, (1/2*(windowWidth))-400, (1/2*(windowHeight)+10));
@@ -182,6 +188,8 @@ function Reroll()
     start2 = random(itemid.ItemID.basic); //early game build
     early2 = IT.data[start2].name;
     
+    console.log (Champ.data[ion]);
+    
     for (let i= 0; i<=4; i++)
         {
             build[i] = random(itemid.ItemID.items)
@@ -198,7 +206,7 @@ function Reroll()
     trin = random(itemid.ItemID.trinkets);
     kets = IT.data[trin].name;
     
-    icon = loadImage("https://ddragon.leagueoflegends.com/cdn/7.10.1/img/champion/"+ ion + ".png") 
+    icon = loadImage("http://ddragon.leagueoflegends.com/cdn/6.24.1/img/champion/"+ ion+".png") 
     icon2 = loadImage("http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/"+ start1 +".png")
     icon3 = loadImage("http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/"+ start2 +".png")
     icon4 = loadImage("http://ddragon.leagueoflegends.com/cdn/6.24.1/img/item/"+ shoe +".png")
